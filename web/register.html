@@ -1,0 +1,339 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Register</title>
+<!--		<link rel="stylesheet" type="text/css" href="reset.css"/>-->
+		<style type="text/css">
+		
+			body{
+				margin:0;
+				padding:0;
+				font-family: "微软雅黑 Light";
+				background:url("WEB-INF/bg.jpg");
+				background-size:cover;
+				overflow:hidden;
+				/*font-family: "微软雅黑";*/
+
+			}
+
+			.box{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				/*height:300px;*/
+				width:650px;
+
+				padding: 40px;
+				background: rgba(0,0,0,.8);
+				box-sizing: border-box;
+				box-shadow: 0 15px 25px rgba(0,0,0,.5);
+				border-radius: 10px;
+				/*margin:200px auto;*/
+				/*border:1px black solid;*/
+				/*font-size:20px;*/
+			}
+			.box h2{
+				margin: 0 0 30px;
+				padding: 0;
+				color: #fff;
+				text-align: center;
+			}
+			.box .inputBox{
+				position: relative;
+				/*margin-bottom:20px;*/
+				height: 80px;
+			}
+
+			.box .chooseBox{
+				/*margin-bottom:10px;*/
+				height: 5px;
+			}
+			.box .inputBox input{
+				width: 60%;
+				padding: 10px 0;
+				font-size: 16px;
+				color: #fff;
+				/*display: block;*/
+				margin: 30px 0;
+				border: none;
+				border-bottom: 1px solid #fff;
+				outline: none;
+				background: transparent;
+				/*autocomplete:"off";*/
+
+				/*float: right;*/
+			}
+			.box .inputBox label,.box .chooseBox label{
+				color: #fff;
+				display: inline-block;
+				width: 70px;
+			}
+
+			.box span{
+				display: inline-block;
+				width: 150px;
+			}
+
+
+			.box button[type="submit"]{
+				background: transparent;
+				border: none;
+				outline: none;
+				background: #03a9f4;
+				float:right;
+				padding: 10px 20px;
+				margin-right: 90px;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+			.box button[type="reset"]{
+				background: transparent;
+				border: none;
+				outline: none;
+				background: #03a9f4;
+				/*float:right;*/
+				padding: 10px 20px;
+				margin-left: 90px;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+
+		</style>
+
+		<script type="text/javascript">
+			//用户名
+			function YHMonblus()
+			{
+				var username=document.getElementById("username");
+				var re = /^[a-zA-Z_]{6,18}$/;
+
+				if(username.value=="")
+				{
+					document.getElementById('YHMerror').innerText = "用户名不能为空";
+					document.getElementById("YHMerror").style.color="yellow";
+					return false;
+				}
+
+				else if(username.value.length>0 && username.value.length<6)
+				{
+
+					document.getElementById('YHMerror').innerText = "格式错误,长度至少为6个字符";
+					document.getElementById("YHMerror").style.color="yellow";
+					return false;
+				}
+
+				else if(username.value.length>18)
+				{
+
+					document.getElementById('YHMerror').innerText = "格式错误,长度至多为18个字符";
+					document.getElementById("YHMerror").style.color="yellow";
+					return false;
+				}
+
+				else if(!re.test(username.value))
+				{
+					document.getElementById('YHMerror').innerText = "格式错误,只能包含英文字母和下划线";
+					document.getElementById("YHMerror").style.color="yellow";
+					return false;
+				}
+
+				else {
+					document.getElementById('YHMerror').innerText ="";
+				}
+			}
+
+			function YHMonfocu() {
+				document.getElementById('YHMerror').innerText ="";
+			}
+
+
+
+
+			//密码
+			function MMonblus()
+			{
+				var password = document.getElementById("password");
+				var re = /^(?=.*[0-9].*)(?=.*[A-Z].*)(?=.*[a-z].*).{6,}$/;
+
+				if (password.value =="")
+				{
+					document.getElementById('MMerror').innerText = "密码不能为空";
+					document.getElementById("MMerror").style.color="yellow";
+
+					return false;
+				}
+
+				else if(password.value<6)
+				{
+					document.getElementById('MMerror').innerHTML = "格式错误,密码至少为6位";
+					document.getElementById("MMerror").style.color="yellow";
+					return false;
+				}
+
+				else if(!re.test(password.value))
+				{
+					document.getElementById('MMerror').innerText="格式错误,必须包含英文字母大小写和数字";
+					document.getElementById("MMerror").style.color="yellow";
+					return false;
+				}
+
+				else {
+					document.getElementById('MMerror').innerText ="";
+				}
+			}
+
+			function MMonfocu(){
+				document.getElementById('MMerror').innerText ="";
+			}
+
+
+
+
+
+			//    确认密码
+			function QRMMonblus(){
+				var password=document.getElementById("password");
+				var confirmPassword=document.getElementById("confirmPassword");
+
+				if(confirmPassword.value==""){
+					document.getElementById('QRMMerror').innerText="请输入确认密码";
+					document.getElementById("QRMMerror").style.color="yellow";
+					return false;
+				}
+
+				else if(password.value != confirmPassword.value){
+					document.getElementById('QRMMerror').innerText="两次密码输入不一致";
+					document.getElementById("QRMMerror").style.color="yellow";
+					return false;
+				}
+
+				else {
+					document.getElementById('QRMMerror').innerText ="";
+				}
+			}
+
+			function QRMMonfocu(){
+				document.getElementById('QRMMerror').innerText ="";
+			}
+
+
+
+
+			//    联系电话
+			function LXDHonblus(phone){
+
+				var phone=document.getElementById("phone");
+				var re =/^1[34578]\d{9}$/;
+
+				if(phone.value==""){
+					document.getElementById('LXDHerror').innerText="请输入联系电话";
+					document.getElementById("LXDHerror").style.color="yellow";
+					return false;
+				}
+
+				else if(phone.value.length!=11)
+				{
+					document.getElementById('LXDHerror').innerText = "电话格式输入错误";
+					document.getElementById("LXDHerror").style.color="yellow";
+					return false;
+				}
+
+				else if(!re.test(phone.value)){
+					document.getElementById('LXDHerror').innerText="电话格式输入错误";
+					document.getElementById("LXDHerror").style.color="yellow";
+					return false;
+				}
+
+				else {
+					document.getElementById('LXDHerror').innerText ="";
+				}
+			}
+
+			function LXDHonfocu(){
+				document.getElementById('LXDHerror').innerText ="";
+			}
+
+
+
+
+			//    电子邮箱
+			function DZYXonblus(){
+				var email=document.getElementById("email");
+				var re= /[a-zA-Z0-9]{1,10}@[a-zA-Z0-9]{1,5}\.[a-zA-Z0-9]{1,5}/;
+				if(email.value==""){
+					document.getElementById('DZYXerror').innerText="请输入电子邮箱";
+					document.getElementById("DZYXerror").style.color="yellow";
+					return false;
+				}
+				else if(!re.test(email.value)){
+					document.getElementById("DZYXerror").innerHTML="邮箱格式不正确";
+					document.getElementById("DZYXerror").style.color="yellow";
+					return false;
+				}
+				else {
+					document.getElementById('DZYXerror').innerText ="";
+				}
+			}
+			function DZYXonfocu(){
+				document.getElementById('DZYXerror').innerText ="";
+			}
+
+
+
+
+		</script>
+		
+	</head>
+	
+	<body>
+
+
+
+		<div class="box">
+			<h2>注册</h2>
+			<form name="myForm" action="RegisterServlet" method="post" >
+				<div class="inputBox">
+					<label>用户名</label>
+					<input type="text" id="username" name="username" autocomplete="off" placeholder="请输入您的用户名" onfocus="YHMonfocu()" onblur="YHMonblus()"/><span id="YHMerror"></span>
+				</div>
+
+				<div class="inputBox">
+					<label>密码</label>
+					<input type="password" id="password" name="password" placeholder="请输入您的密码" onfocus="MMonfocu()" onblur="MMonblus()"/><span id="MMerror"></span>
+				</div>
+
+				<div class="inputBox">
+					<label>确认密码</label>
+					<input type="password" id="confirmPassword" name="password" placeholder="请确认您的密码" onfocus="QRMMonfocu()" onblur="QRMMonblus()"/><span id="QRMMerror"></span>
+				</div>
+
+				<div class="chooseBox">
+					<label>性别</label>
+					<input type="radio" name="sex" value="male" checked><label>男</label></input>
+					<input type="radio" name="sex" value="female" checked><label>女</label></input>
+				</div>
+
+				<div class="inputBox">
+					<label>联系电话</label>
+					<input type="text" id="telephone" name="telephone" placeholder="请输入您的联系电话" onfocus="LXDHonfocu()" onblur="LXDHonblus()"/><span id="LXDHerror"></span>
+				</div>
+
+				<div class="inputBox">
+					<label>电子邮箱</label>
+					<input type="text" id="email" name="email" class="inputText" placeholder="请输入您的电子邮箱"  onfocus="DZYXonfocu()" onblur="DZYXonblus()"/><span id="DZYXerror"></span>
+				</div>
+
+				<button type="reset" onclick="">重置</button>
+				<button type="submit"id="smbtn">注册</button>
+
+			</form>
+			<br>
+			<a href="login.html" >登录</a>
+		</div>
+
+	</body>
+</html>
+

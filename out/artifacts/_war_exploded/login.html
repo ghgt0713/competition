@@ -1,0 +1,137 @@
+<html>
+<!doctype html>
+	<head>
+	<title>Login</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css">
+			body{
+				margin:0;
+				padding:0;
+				font-family: sans-serif;
+				background:url("WEB-INF/bg.jpg");
+				background-size:cover;
+				overflow:hidden;
+
+			}
+
+			.box{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				/*height:300px;*/
+				width:400px;
+				padding: 40px;
+				background: rgba(0,0,0,.8);
+				box-sizing: border-box;
+				box-shadow: 0 15px 25px rgba(0,0,0,.5);
+				border-radius: 10px;
+				/*margin:200px auto;*/
+				/*border:1px black solid;*/
+				/*font-size:20px;*/
+			}
+			.box h2{
+				margin: 0 0 30px;
+				padding: 0;
+				color: #fff;
+				text-align: center;
+			}
+			.box .inputBox{
+				position: relative;
+			}
+
+			.box .inputBox input{
+				width: 100%;
+				padding: 10px 0;
+				font-size: 16px;
+				color: #fff;
+				margin-bottom: 30px;
+				border: none;
+				border-bottom: 1px solid #fff;
+				outline: none;
+				background: transparent;
+			}
+			.box .inputBox label{
+				position: absolute;
+				top: 0;
+				left: 0;
+				padding: 10px 0;
+				font-size: 16px;
+				color: #fff;
+				pointer-events: none;
+				transition: .5s;
+			}
+			.box .inputBox input:focus ~ label,
+			.box .inputBox input:valid ~ label
+			{
+				top:-18px;
+				left: 0;
+				color: #03a9f4;
+				font-size: 12px;
+			}
+			.box button[type="submit"]{
+				background: transparent;
+				border: none;
+				outline: none;
+				background: #03a9f4;
+				float:right;
+				padding: 10px 20px;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+			.box button[type="reset"]{
+				background: transparent;
+				border: none;
+				outline: none;
+				background: #03a9f4;
+				/*float:right;*/
+				padding: 10px 20px;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+
+		
+		</style>
+		<script type="text/javascript">
+
+			window.onload = function () {
+				var btn = document.getElementsByName("username");
+				btn.onclick = function () {
+					// alert("动态click事件");
+					//if的条件是输入的用户名和密码与数据库中存在的信息匹配
+					if(false){
+						location = "homePage.html";
+					}else{
+						alert("用户名不存在或密码错误");
+					}
+
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<h2>登录</h2>
+
+			<form action="LoginServlet" method="post">
+				<div class="inputBox">
+
+					<input type="text" name="username" required=""/>
+					<label>用户名</label>
+				</div>
+
+				<div class="inputBox">
+
+					<input type="password" name="password" required=""/>
+					<label>密码</label>
+				</div>
+<!--				<input type="submit" name="" value="submit">-->
+				<button type="reset" onclick="">重置</button>
+				<button type="submit" id="smbtn">登录</button>
+			</form>
+			<br>
+			<a href="register.html" >注册</a>
+		</div>
+	</body>
+</html>
